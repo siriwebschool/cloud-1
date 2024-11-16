@@ -1,0 +1,32 @@
+
+Docker Compose:
+docker compose up --build
+
+
+container to stop:
+docker stop <container_id_or_name>
+docker ps
+
+
+image to stop:
+docker rmi <image_name_or_id>
+
+docker rmi -f hello-world
+
+docker remove container:
+docker rm (container name or id) eg:af344a0ed417
+
+-remove all images: (force)
+docker rmi -f $(docker images -q)
+
+
+-- remove all container:
+docker rm $(docker ps -a -q)
+
+
+- remove volume:
+docker volume rm $(docker volume ls -q)
+
+
+
+
