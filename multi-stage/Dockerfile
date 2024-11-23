@@ -14,10 +14,12 @@ RUN npm install
 COPY . .
 
 # Stage 2: Production Stage
-FROM node:18-alpine AS multistagefinal
+FROM node:18-slim AS multistagefinal
 # FROM multistage1 AS multistagefinal
 
 WORKDIR /usr/src/app
+
+# RUN apk add --no-cache iputils
 
 # Copy only the essential files from the build stage
 COPY --from=multistage1 /usr/src/app .

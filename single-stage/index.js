@@ -6,6 +6,10 @@ app.get('/', (req, res) => {
   res.send('Hello SSOW from Express! (Single Stage)');
 });
 
+app.get('/service', (req, res) => {
+  res.send('Hello SSOW from Express 2! (Single Stage)');
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

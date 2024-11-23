@@ -4,6 +4,8 @@ FROM node:18 AS singlestage
 # Set working directory
 WORKDIR /usr/src/app
 
+# RUN apt-get update && apt-get install -y iputils-ping && rm -rf /var/lib/apt/lists/*
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
@@ -14,7 +16,7 @@ RUN npm install
 COPY . .
 
 # Expose port
-EXPOSE 7000
+EXPOSE 7005
 
 # Run the app
 CMD ["node", "index.js"]
