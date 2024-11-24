@@ -1,58 +1,74 @@
-with this application we are dockerizing hello world service
-   technology used express js framework
+1. Prerequisite: Node.js (Optional)
+Although this application runs in Docker, you can install Node.js and npm on your machine for a better understanding of the environment setup.
 
-steps:
-  1. though we dont need node js as we running this application in docker. npm & node can be installed on your machine, however its good that you have env setup in such way.
-  2. download docker desktop from following site:
-  https://docs.docker.com/desktop/setup/install/windows-install/
-  3. app structure
-      sample
-       |_app.js
-       |_package.json
-       |_package-lock.json
-       |_README.md
-  4. in app js we written a service where it display hello world
-  5. in Dockerfile, with this file command we are creating a image.
-  6. understand some basic commands which you can find in figjam link of session 11/02/2024
-  7. now once these things are ready, we can build the image first and run the container.
-  8. to build the image:
-     - docker build -t express-hello .
-      - here name of the image is - express-hello
-  9. once you see image built is successful, run the container with following command.
-     - docker run -p 3000:3000 --name express-hello-container express-hello
-       - here, name of the container is - express-hello-container
+2. Install Docker Desktop
+Download and install Docker Desktop from the official Docker documentation.
 
+3. Application Structure
+The project directory structure is as follows:
 
+sample/
+├── app.js
+├── package.json
+├── package-lock.json
+├── README.md
 
+4. The Hello World Service
+In app.js, we have created a simple Express.js service that responds with "Hello World" when accessed.
 
+5. Dockerfile
+The Dockerfile contains instructions to build a Docker image for the application.
 
-Docker Compose:
-docker compose up --build
+6. Docker Commands Basics
+Refer to FigJam session notes from 11/02/2024 for understanding Docker basics.
 
+### COMMANDS SETION ###
 
-container to stop:
+# Building and Running the Application
+
+# Build the Docker Image
+
+Run the following command in the project directory to build the image:
+
+- docker build -t express-hello .
+info:
+  express-hello is the name of the Docker image.
+
+# Run the Docker Container
+
+Run the container using the built image:
+
+- docker run -p 3000:3000 --name express-hello-container express-hello
+info:
+ express-hello-container is the name of the Docker container.
+
+The application will now be accessible at http://localhost:3000.
+
+# Check Image
+docker images # will list all images build -from this you can take the image names or ids
+
+# Stop a Running Container
 docker stop <container_id_or_name>
-docker ps
+docker ps  # List running containers
 
-
-image to stop:
+# Remove an Image
 docker rmi <image_name_or_id>
+docker rmi -f hello-world  # Force removal
 
-docker rmi -f hello-world
+# Remove a Container
+docker rm <container_id_or_name>
+docker rm af344a0ed417  # Example
 
-docker remove container:
-docker rm (container name or id) eg:af344a0ed417
-
--remove all images: (force)
+# Remove All Images (Force)
 docker rmi -f $(docker images -q)
 
-
--- remove all container:
+# Remove All Containers
 docker rm $(docker ps -a -q)
 
-
-- remove volume:
+# Remove Volumes
 docker volume rm $(docker volume ls -q)
+
+
 
 
 
